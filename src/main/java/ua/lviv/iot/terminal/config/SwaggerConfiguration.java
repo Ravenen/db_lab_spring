@@ -18,35 +18,35 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @Configuration
 public class SwaggerConfiguration {
-    private static final String SWAGGER_API_VERSION = "1.0";
-    private static final String LICENSE_TEXT = "License";
-    private static final String title = "Spring Boot Start by Pavliyk (Ravenen)";
-    private static final String description = "Buy Engenius!";
+  private static final String SWAGGER_API_VERSION = "1.0";
+  private static final String LICENSE_TEXT = "License";
+  private static final String title = "Spring Boot Start by Pavliyk (Ravenen)";
+  private static final String description = "Buy Engenius!";
 
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title(title)
-                .description(description)
-                .license(LICENSE_TEXT)
-                .version(SWAGGER_API_VERSION)
-                .build();
-    }
+  private ApiInfo apiInfo() {
+    return new ApiInfoBuilder()
+        .title(title)
+        .description(description)
+        .license(LICENSE_TEXT)
+        .version(SWAGGER_API_VERSION)
+        .build();
+  }
 
-    @Bean
-    public Docket decksApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .pathMapping("/")
-                .select()
-                .paths(PathSelectors.any())
-                .build();
-    }
+  @Bean
+  public Docket decksApi() {
+    return new Docket(DocumentationType.SWAGGER_2)
+        .apiInfo(apiInfo())
+        .pathMapping("/")
+        .select()
+        .paths(PathSelectors.any())
+        .build();
+  }
 
-    @Bean
-    public LinkDiscoverers discoverers() {
-        List<LinkDiscoverer> plugins = new ArrayList<>();
-        plugins.add(new CollectionJsonLinkDiscoverer());
-        return new LinkDiscoverers(SimplePluginRegistry.create(plugins));
+  @Bean
+  public LinkDiscoverers discoverers() {
+    List<LinkDiscoverer> plugins = new ArrayList<>();
+    plugins.add(new CollectionJsonLinkDiscoverer());
+    return new LinkDiscoverers(SimplePluginRegistry.create(plugins));
 
-    }
+  }
 }
