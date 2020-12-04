@@ -9,20 +9,3 @@ spring:
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.MySQL8Dialect
-
-#spring:
-#    datasource:
-#url:jdbc:mysql://localhost/pavliyk_3?serverTimezone=UTC
-#username:lidl
-#password:CoolPassword233
-#driver-class-name:com.mysql.jdbc.Driver
-#jpa:
-## Show or not log for each sql query
-#show-sql:true
-#hibernate:
-## Hibernate ddl auto (validate, create, create-drop, update)
-#ddl-auto:create
-## Naming strategy
-#naming-strategy:org.hibernate.cfg.ImprovedNamingStrategy
-#server:
-#port:8080
