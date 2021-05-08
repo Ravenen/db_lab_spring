@@ -1,11 +1,23 @@
 spring:
     datasource:
-        url: ${JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/pavliyk_3?serverTimezone=UTC}
-        username: ${JDBC_DATABASE_USERNAME:lidl}
-        password: ${JDBC_DATABASE_PASSWORD:CoolPassword233}
+        url: ${JDBC_DATABASE_URL:jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?serverTimezone=UTC&createDatabaseIfNotExist=true}
+        username: ${JDBC_DATABASE_USERNAME:${DB_USER}}
+        password: ${JDBC_DATABASE_PASSWORD:${DB_PASSWORD}}
     jpa:
         hibernate:
-            ddl-auto: validate
+            ddl-auto: update
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.MySQL8Dialect
+management:
+    endpoints:
+      web:
+        exposure:
+          include: health,prometheus
+    metrics:
+      export:
+        prometheus:
+          enabled: true
+      distribution:
+        percentiles-histogram:
+          "[http.server.requests]": true
